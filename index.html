@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+    type="text/javascript"></script>
+    
+    <!--include jQuery Validation Plugin-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
+    type="text/javascript"></script>
+    
+    <!--Optional: include only if you are using the extra rules in additional-methods.js -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
+    type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+</head>
+
+<body onload="addDateOptions()">
+    <header style="display: inline-block;">
+        <div id="logo">
+        <img src="logo.jpg" style="float:left; border:3px solid rgb(100, 100, 98); margin-top: 2px; margin-left: 10px; width: 160px; height: 70px; border-radius: 1em 2em 1em 2em;" />
+        <h5 style="margin-left: 510px; margin-top: 0px; width: 180px;">
+            </br>
+            Submits:</br>
+            Gal Lahiani 203960869</br>
+            Ron Elharrar 205636202
+        </h5>
+        </div>
+    </header>
+    
+    <menu>
+        <ul>
+            <li><a href="#" onclick="welcomeFunction()">Welcome</a></li>
+            <li><a href="#" onclick="registrationFunction()">Registration</a></li>
+            <li><a href="#" onclick="loginFunction()">Login</a></li>
+            <li><a href="#" onclick="aboutFunction()">About</a></li>
+        </ul>
+    </menu>
+
+    <rightSide>
+    </rightSide>
+    
+    <leftSide>        
+    </leftSide>
+
+    <content>
+        <div id="welcome">
+            <h1 style="margin-left: 70px; margin-top: 50px"><br/> Welcome to our Packman game!</h1>
+            <h2 style="margin-left: 160px; margin-top: 50px">Please choose option:</h2>
+            <button class="buttonA" style="margin-left: 140px; margin-top: 30px" onclick="registrationFunction()">Registration</button>
+            <button class="buttonA" style="margin-left: 20px; margin-top: 30px" onclick="loginFunction()">Login</button>
+        </div>
+
+        <div id="registration" style="display:none;">
+            <h1 style="margin-left: 210px">Sign Up</h1>
+            <p style="margin-left: 5px">Please fill in this form to register:</p>
+            <hr>
+            <form id="registrationForm" action="">
+                <label style="margin-left: 5px" for="regUserName"><b>User Name</b></label>
+                <input id="regUserName" name="regUserName" type="text" style="margin-left: 13px" placeholder="Enter User Name">               
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="regPassword"><b>Password</b></label>
+                <input id="regPassword" name="regPassword" type="password" style="margin-left: 29px" placeholder="Enter Password">
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="regFirstName"><b>First Name</b></label>
+                <input id="regFirstName" name="regFirstName" type="text" style="margin-left: 12px" placeholder="Enter First Name">
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="regLastName"><b> Last Name</b></label>
+                <input id="regLastName" name="regLastName" type="text" style="margin-left: 16px" placeholder="Enter Last Name">
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="regEmail"><b>Email</b></label>
+                <input id="regEmail" name="regEmail" type="email" style="margin-left: 59px" placeholder="Enter Email">
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="birthdate"><b>Birthdate </b></label>
+                <select id="day" name="day" style="margin-left: 24px"></select>
+                Day
+                <select id="month" name="month" style="margin-left: 10px"></select>
+                Month
+                <select id="year" name="year" style="margin-left: 10px" ></select>
+                Year                    
+                </br>
+                </br>
+                <input type="submit" value="Sign Up" class="buttonB" style="margin-left: 106px"/>
+            </form>
+        </div>
+
+        <div id="login" style="display:none;">
+            <h1 style="margin-left: 210px">Sign In</h1>
+            <hr>
+                <label style="margin-left: 5px" for="userNameLogin"><b>User Name</b></label>
+                <input id="userNameLogin" type="text" style="margin-left: 8px" placeholder="Enter User Name">               
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="passwordLogin"><b>Password</b></label>
+                <input id="passwordLogin" type="password" style="margin-left: 25px" placeholder="Enter Password">
+                </br>
+                </br>
+                <input type="button" class="buttonB" onclick="validateLoginUserFunction()" style="margin-left: 105px" value="Login"> 
+        </div>
+
+        <dialog id="about">
+            <button style="float: right;" onclick="closeModalFunction()">X</button>
+            <h3>Submits:</h3>
+            <p>
+                Ron Elharrar 205636202</br>
+                Gal Lahiani 203960869</br>
+                </br>                
+                <h5>Use in jQuery Plugin:</h5>
+                - We are using the jQuery Validation Plugin for validate registration details</br>and game expand settings.</br>
+                <h5>We didn't use templates exept the given Packman template with the work.</h5>
+                <h5>Our Difficulties:</h5>
+                - One of our difficults was to use the jQuery Validation Plugin and make it work.</br>
+                - To use the anime.js animation library and make it work in the way we want it to work.</br>
+                - To find the best way to implement part of the requirements.
+            </p>                              
+        </dialog>
+
+        <div id="settings" style="display:none;">
+            <h1 style="margin-left: 170px">Game Settings:</h1>
+            <p style="margin-left: 2px">
+                For starting your game please choose your favorite settings!</br>
+                You can click the Random Settings button for generate random game settings.
+            </p>
+            <hr>
+            <p style="margin-left: 2px">
+                For using the standarts arrows for moving, please do not fill the keys fields!              
+            </p>
+            <form id="settingsForm" action="">
+                <label for="rightKey" style="margin-left: 5px"><b>Right Key:</b></label>
+                <input id="rightKey" name="rightKey" type="text" style="margin-left: 33.5px" placeholder="Enter key for right move">
+                </br>       
+                <label for="leftKey" style="margin-left: 5px"><b>Left Key:</b></label>
+                <input id="leftKey" name="leftKey" type="text" style="margin-left: 40px" placeholder="Enter key for left move">               
+                </br>                
+                <label for="upKey" style="margin-left: 5px"><b>Up Key:</b></label>
+                <input id="upKey" name="upKey" type="text" style="margin-left: 53px" placeholder="Enter key for up move">
+                </br>
+                <label for="downKey" style="margin-left: 5px"><b>Down Key:</b></label>
+                <input id="downKey" name="downKey" type="text" style="margin-left: 34px" placeholder="Enter key for down move">               
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="ballsNum"><b>Balls Number:</b></label>
+                <input id="ballsNum" name="ballsNum" type="text" style="margin-left: 7px" placeholder="Enter Balls Number">
+                </br>
+                </br>
+                <label style="margin-left: 5px"><b>Choose type and color for Balls:</b></label></br>
+                <select id="firstTypeBalls" name="firstTypeBalls" style="margin-left: 5px">
+                    <option value="5">5 Points</option>
+                    <option value="15">15 Points</option>
+                    <option value="25">25 Points</option>
+                </select>
+                <select id="firstColorBalls" name="firstColorBalls" style="margin-left: 5px">
+                    <option value="#F3E5AB">Vanila</option>
+                    <option value="#C68E17">Caramel</option>
+                    <option value="#966F33">Wood</option>
+                    <option value="#C36241">Rust</option>
+                    <option value="#6F4E37">Coffee</option>
+                    <option value="#C85A17">Chocolate</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                </select>
+                </br>
+                <select id="secondTypeBalls" name="secondTypeBalls" style="margin-left: 5px">
+                    <option value="5">5 Points</option>
+                    <option value="15">15 Points</option>
+                    <option value="25">25 Points</option>
+                </select>
+                <select id="secondColorBalls" name="secondColorBalls" style="margin-left: 5px">
+                    <option value="#F3E5AB">Vanila</option>
+                    <option value="#C68E17">Caramel</option>
+                    <option value="#966F33">Wood</option>
+                    <option value="#C36241">Rust</option>
+                    <option value="#6F4E37">Coffee</option>
+                    <option value="#C85A17">Chocolate</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                </select>
+                </br>
+                <select id="thirdTypeBalls" name="thirdTypeBalls" style="margin-left: 5px">
+                    <option value="5">5 Points</option>
+                    <option value="15">15 Points</option>
+                    <option value="25">25 Points</option>
+                </select>
+                <select id="thirdColorBalls" name="thirdColorBalls" style="margin-left: 5px">
+                    <option value="#F3E5AB">Vanila</option>
+                    <option value="#C68E17">Caramel</option>
+                    <option value="#966F33">Wood</option>
+                    <option value="#C36241">Rust</option>
+                    <option value="#6F4E37">Coffee</option>
+                    <option value="#C85A17">Chocolate</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                </select>
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="timeOfGame"><b>Time Of Game:</b></label>
+                <input id="timeOfGame" name="timeOfGame" type="text" style="margin-left: 35px" placeholder="Enter time to play">
+                </br>
+                </br>
+                <label style="margin-left: 5px" for="monstersNum"><b>Monsters Number:</b></label>
+                <input id="monstersNum" name="monstersNum" type="text" style="margin-left: 11px" placeholder="Enter monsters Number">
+                </br>
+                </br>
+                <input type="submit" value="Update Settings" class="buttonB" style="margin-left: 10px"/>
+                <input type="button" class="buttonB" onclick="randomGameSettingsFunction()" style="margin-left: 10px" value="Random Settings">
+            </form>
+        </div>
+
+        <div id="game" style="display:none;">
+            NAME:
+            <input id="lblCurrUserName" style="margin-left: 6px" type="text" size="15" readonly/>
+            TIME:
+            <input id="lblTime" style="margin-left: 2px" type="text" size="6" readonly/>
+            <br/>
+            SCORE:
+            <input id="lblScore" style="margin-left: 1px" type="text" size="15" readonly/>                
+            LIFE:
+            <input id="lblLife" style="margin-left: 8px" type="text" size="6" readonly/>
+            <h5 id="lostLife">You Lost one Life :(</h5>
+            <h5 id="movingPoints">You won 50 Points :)</h5>
+            <h5 id="lost">You Lost The Game!</h5>
+            <h5 id="win">We Have A Winner!!!</h5>
+            <h5 id="doBetter">You Can Do Better...</h5>
+
+            <hr>
+            <canvas id="canvas" height="600" width="600"></canvas>
+            <hr>
+            <input type="button" class="buttonB" onclick="settingsFunction()" style="margin-left: 10px" value="Start new Game">            
+            <audio id="ourSong">
+                <source src="BassaSababa.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+    </content>
+    <footer>
+        <p style="margin-left: 45px;">Our site is a Packman game, which you can generate your own game settings after registration and login.<br/>
+        Hope you enjoy the game!<br/>
+        To contact us please send a mail to:<br/>
+        lahianig@post.bgu.ac.il or .</p>
+    </footer>
+
+<script type="text/javascript">
+$.validator.addMethod('mypassword', function(value, element) {
+        return this.optional(element) || (value.match(/[a-zA-Z]/) && value.match(/[0-9]/));
+    },
+    'Password must contain at least one numeric and one alphabetic character.');
+
+$(document).ready(function () {
+    $("#registrationForm").validate({
+        onkeyup: false,
+        onclick: false,
+        onfocusout: false,
+        rules: {
+            regUserName: {
+                required: true,
+                minlength: 4
+            },
+            regPassword: {
+                required: true,
+                minlength: 8,
+                alphanumeric: true,
+                mypassword: true
+            },
+            regFirstName: {
+                required: true,
+                lettersonly: true
+            },
+            regLastName: {
+                required: true,
+                lettersonly: true
+            },
+            regEmail: {
+                required: true,
+                email: true
+            },
+            day: {
+                required: true
+            },
+            month: {
+                required: true
+            },
+            year: {
+                required: true
+            },
+        },
+        // Specify validation error messages
+        messages: {
+            regUserName: {
+                required: "Please enter your user name",
+                minlength: "Your user name must be at least 4 characters long"
+            },
+            regPassword: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 8 characters long",
+                alphanumeric: "Your password must contains letters and numbers"
+            },
+            regFirstName: {
+                required: "Please enter your first name",
+                lettersonly: "Please enter a valid first name, letters only"
+            },
+            regLastName: {
+                required: "Please enter your last name",
+                lettersonly: "Please enter a valid last name, letters only"
+            },
+            
+            regEmail: {
+                required: "Please enter your email",
+                email: "Please enter a valid email address"
+            }
+        },        
+        submitHandler: function(form) {
+            RegisterUserFunction();
+            return false;
+        }
+    });
+
+    $("#settingsForm").validate({
+        onkeyup: false,
+        onclick: false,
+        onfocusout: false,
+        rules: {
+            rightKey: {
+                maxlength: 1
+            },
+            leftKey: {
+                maxlength: 1
+            },
+            upKey: {
+                maxlength: 1
+            },
+            downKey: {
+                maxlength: 1
+            },
+            ballsNum: {
+                required: true,
+                range: [50,90]
+            },
+            timeOfGame: {
+                required: true,
+                min: 60
+            },
+            monstersNum: {
+                required: true,
+                range: [1,3]
+            },
+        },
+        // Specify validation error messages
+        messages: {
+            rightKey: {
+                maxlength: "Right key must be one character"
+            },
+            leftKey: {
+                maxlength: "Left key must be one character"
+            },
+            upKey: {
+                maxlength: "Up key must be one character"
+            },
+            downKey: {
+                maxlength: "Down key must be one character"
+            },
+            ballsNum: {
+                required: "Please enter balls number",
+                range: "Please enter a value between 50 and 90"
+            },
+            timeOfGame: {
+                required: "Please enter time to play in the game",
+                min: "Please enter a number from 60 or higher"
+            },
+            monstersNum: {
+                required: "Please enter monsters number",
+                range: "Please enter a value between 1 and 3"
+            }
+        },        
+        submitHandler: function(form) {
+            var firstCol = document.getElementById("firstColorBalls");
+            var secondCol = document.getElementById("secondColorBalls");
+            var thirdCol = document.getElementById("thirdColorBalls");
+            var firstType = document.getElementById("firstTypeBalls");
+            var secondType = document.getElementById("secondTypeBalls");
+            var thirdType = document.getElementById("thirdTypeBalls");
+            if (firstCol.options[firstCol.selectedIndex].value == secondCol.options[secondCol.selectedIndex].value ||
+            firstCol.options[firstCol.selectedIndex].value == thirdCol.options[thirdCol.selectedIndex].value ||
+            secondCol.options[secondCol.selectedIndex].value == thirdCol.options[thirdCol.selectedIndex].value) {
+                alert("You need to choose different colors for different balls points type!");
+            }
+            else if (firstType.options[firstType.selectedIndex].value == secondType.options[secondType.selectedIndex].value ||
+            firstType.options[firstType.selectedIndex].value == thirdType.options[thirdType.selectedIndex].value ||
+            secondType.options[secondType.selectedIndex].value == thirdType.options[thirdType.selectedIndex].value) {
+                alert("You need to choose different types for for each balls points!");
+            }
+            else {
+                updateGameSettingsFunction();
+            }
+            return false;
+        }
+    });
+});
+
+
+// Wrap every letter in a span
+$('#lostLife').each(function(){
+$(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+var animLostLife = anime.timeline({loop: 1})
+.add({
+targets: '#lostLife .letter',
+scale: [4,1],
+opacity: [0,1],
+translateZ: 0,
+easing: "easeOutExpo",
+autoplay: false,
+duration: 950,
+delay: function(el, i) {
+    return 70*i;
+}
+}).add({
+targets: '#lostLife',
+opacity: 0,
+autoplay: false,
+duration: 1000,
+easing: "easeOutExpo",
+delay: 1000
+});
+
+
+// Wrap every letter in a span
+$('#movingPoints').each(function(){
+$(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+
+var animMovingPoints = anime.timeline({loop: 1})
+.add({
+targets: '#movingPoints .letter',
+scale: [4,1],
+opacity: [0,1],
+translateZ: 0,
+easing: "easeOutExpo",
+autoplay: false,
+duration: 950,
+delay: function(el, i) {
+return 70*i;
+}
+}).add({
+targets: '#movingPoints',
+opacity: 0,
+autoplay: false,
+duration: 1000,
+easing: "easeOutExpo",
+delay: 1000
+});
+
+
+// Wrap every letter in a span
+$('#lost').each(function(){
+$(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+
+var animLost = anime.timeline({loop: 1})
+.add({
+targets: '#lost .letter',
+scale: [4,1],
+opacity: [0,1],
+translateZ: 0,
+easing: "easeOutExpo",
+autoplay: false,
+duration: 950,
+delay: function(el, i) {
+return 70*i;
+}
+}).add({
+targets: '#lost',
+opacity: 0,
+autoplay: false,
+duration: 3000,
+easing: "easeOutExpo",
+delay: 1000
+});
+
+
+// Wrap every letter in a span
+$('#win').each(function(){
+$(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+
+var animWin = anime.timeline({loop: 1})
+.add({
+targets: '#win .letter',
+scale: [4,1],
+opacity: [0,1],
+translateZ: 0,
+easing: "easeOutExpo",
+autoplay: false,
+duration: 950,
+delay: function(el, i) {
+return 70*i;
+}
+}).add({
+targets: '#win',
+opacity: 0,
+autoplay: false,
+duration: 3000,
+easing: "easeOutExpo",
+delay: 1000
+});
+
+
+// Wrap every letter in a span
+$('#doBetter').each(function(){
+$(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+
+var animDoBetter = anime.timeline({loop: 1})
+.add({
+targets: '#doBetter .letter',
+scale: [4,1],
+opacity: [0,1],
+translateZ: 0,
+easing: "easeOutExpo",
+autoplay: false,
+duration: 950,
+delay: function(el, i) {
+return 70*i;
+}
+}).add({
+targets: '#doBetter',
+opacity: 0,
+autoplay: false,
+duration: 3000,
+easing: "easeOutExpo",
+delay: 1000
+});
+
+</script>
+
+<script type="text/javascript">
+    var context = canvas.getContext("2d");
+    var shape = new Object();
+    var pointsShape = new Object();
+    var monstersShape = [];
+    var board;
+    var score;
+    var lifeLeft;
+    var pac_color;
+    var start_time;
+    var time_elapsed;
+    var interval;
+    var currentUser;
+    var gameSettings;
+    var lastPacDirection;
+    var stillExist = 1;
+    var myAudio = document.getElementById("ourSong"); 
+    var user = {userName: "a", password: "a", firstName:"Default", lastName:"User", Email: "a@gmai.com", day: 1, month: 1, year: 2019};
+    var users = [];
+    users.push(user);
+
+
+    function Start() {
+        board = new Array();
+        secondaryBoard = new Array();
+        score = 0;
+        pac_color = "yellow";
+        var cnt = 100;
+        var food_remain = gameSettings["ballsNum"];
+        var fiveBalls = food_remain * 0.6;
+        var fifteenBalls = food_remain * 0.3;
+        var twentyfiveBalls = food_remain * 0.1;
+        var pacman_remain = 1;
+        var fiveDrowed = 0;
+        if (fiveBalls % 10 >= 0.5) {
+            fiveBalls = Math.round(fiveBalls);
+        }
+        else {
+            fiveBalls = Math.floor(fiveBalls);
+        }
+        if (fifteenBalls % 10 >= 0.5) {
+            fifteenBalls = Math.round(fifteenBalls);
+        }
+        else {
+            fifteenBalls = Math.floor(fifteenBalls);
+        }
+        if (twentyfiveBalls % 10 >= 0.5) {
+            twentyfiveBalls = Math.round(twentyfiveBalls);
+        }
+        else {
+            twentyfiveBalls = Math.floor(twentyfiveBalls);
+        }
+        for ( var i = 0; i < gameSettings["monstersNumber"]; i++) {
+            monstersShape.push(new Object());
+            monstersShape[i].i = 0;
+            monstersShape[i].j = 0;
+        }        
+        start_time = new Date();
+        for (var i = 0; i < 10; i++) {
+            board[i] = new Array();
+            secondaryBoard[i] = new Array();
+            //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
+            for (var j = 0; j < 10; j++) {
+                secondaryBoard[i][j] = 0;
+                if ((i === 2 && j === 2) || (i === 2 && j === 3) || (i === 2 && j === 4) || (i === 7 && j === 1) || (i === 7 && j === 2) || (i === 4 && j === 7) || (i === 5 && j === 7)|| (i === 6 && j === 7)) {
+                    board[i][j] = 4;
+                    secondaryBoard[i][j] = 4;
+                } else {
+                    fiveDrowed = gameSettings["ballsNum"] - food_remain;
+                    var randomNum = Math.random();
+                    if (randomNum <= 1.0 * food_remain / cnt && fiveBalls > fiveDrowed) {
+                        food_remain--;
+                        board[i][j] = 1;
+                    } else if (randomNum < 1.0 * (pacman_remain + food_remain) / cnt && pacman_remain > 0) {                          
+                        shape.i = i;
+                        shape.j = j;
+                        pacman_remain--;
+                        board[i][j] = 2;                                              
+                    } else {
+                        board[i][j] = 0;
+                    }
+                    cnt--;
+                }
+            }
+        }
+        fiveDrowed = gameSettings["ballsNum"] - food_remain;
+        fiveBalls = fiveBalls - fiveDrowed;
+        while (fiveBalls > 0) {
+            var emptyCell = findRandomEmptyCell(board);
+            board[emptyCell[0]][emptyCell[1]] = 1;
+            fiveBalls--;
+        }
+        while (fifteenBalls > 0) {
+            var emptyCell = findRandomEmptyCell(board);
+            board[emptyCell[0]][emptyCell[1]] = 5;
+            fifteenBalls--;
+        }
+        while (twentyfiveBalls > 0) {
+            var emptyCell = findRandomEmptyCell(board);
+            board[emptyCell[0]][emptyCell[1]] = 6;
+            twentyfiveBalls--;
+        }
+        startMonstersPosition(secondaryBoard);
+        var emptyCell = findRandomEmptyCell(board);
+        while (secondaryBoard[emptyCell[0]][emptyCell[1]] == 3 || secondaryBoard[emptyCell[0]][emptyCell[1]] == 4) {
+            emptyCell = findRandomEmptyCell(board);
+        }
+        pointsShape.i = emptyCell[0];
+        pointsShape.j = emptyCell[1];
+        secondaryBoard[emptyCell[0]][emptyCell[1]] = 50;
+        keysDown = {};
+        addEventListener("keydown", function (e) {
+            if (e.keyCode == '38' || e.keyCode == '40') {
+                // avoid scrolling
+                e.preventDefault();
+            }            
+            console.log(e.keyCode);
+            keysDown[e.keyCode] = true;
+        }, false);
+        addEventListener("keyup", function (e) {
+            keysDown[e.keyCode] = false;
+        }, false);
+        interval = setInterval(UpdatePosition, 300);
+        playAudio();
+    }
+
+    function startMonstersPosition(secondaryBoard) {
+        for (var x = 0; x < gameSettings["monstersNumber"]; x++) {
+            secondaryBoard[monstersShape[x].i][monstersShape[x].j] = 0;          
+            var wall = Math.floor((Math.random() * 3) + 1);
+            var i;
+            var j;            
+            if (wall == 0) {
+                i = 0;
+                j = 0;
+            } else if (wall == 1) {
+                i = 9;
+                j = 0;
+            } else if (wall == 2) {
+                i = 0;
+                j = 9;
+            } else {
+                i = 9;
+                j = 9;
+            }      
+            if (board[i][j] != 2 && secondaryBoard[i][j] != 30 && secondaryBoard[i][j] != 31 && secondaryBoard[i][j] != 32 && secondaryBoard[i][j] != 4) {                
+                monstersShape[x].i = i;
+                monstersShape[x].j = j;
+                var str = "3";
+                str = str.concat(x);
+                secondaryBoard[monstersShape[x].i][monstersShape[x].j] = parseInt(str);          
+            }    
+        }
+    }
+
+
+    function findRandomEmptyCell(board) {
+        var i = Math.floor((Math.random() * 9) + 1);
+        var j = Math.floor((Math.random() * 9) + 1);
+        while (board[i][j] !== 0) {
+            i = Math.floor((Math.random() * 9) + 1);
+            j = Math.floor((Math.random() * 9) + 1);
+        }
+        return [i, j];
+    }
+
+    /**
+     * @return {number}
+     */
+    function GetKeyPressed() {
+        if (keysDown[gameSettings["up"]]) {
+            return 1;
+        }
+        if (keysDown[gameSettings["down"]]) {
+            return 2;
+        }
+        if (keysDown[gameSettings["left"]]) {
+            return 3;
+        }
+        if (keysDown[gameSettings["right"]]) {
+            return 4;
+        }
+    }
+
+    function playAudio() { 
+        myAudio.play(); 
+    } 
+
+    function pauseAudio() { 
+        myAudio.pause();
+        myAudio.load();  
+    }
+
+    function Draw() {
+        context.clearRect(0, 0, canvas.width, canvas.height); //clean board
+        var count = gameSettings["monstersNumber"];
+        lblScore.value = score;
+        lblTime.value = time_elapsed;
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                var center = new Object();
+                center.x = i * 60 + 30;
+                center.y = j * 60 + 30;
+                if (board[i][j] === 2) {
+                    if (lastPacDirection === 1) {
+                        context.beginPath();
+                        context.arc(center.x, center.y, 30, 1.65 * Math.PI, 1.35 * Math.PI); // half circle
+                        context.lineTo(center.x, center.y);
+                        context.fillStyle = pac_color; //color
+                        context.fill();
+                        context.beginPath();
+                        context.arc(center.x + 15, center.y - 9, 5, 0, 2 * Math.PI); // circle
+                        context.fillStyle = "black"; //color
+                        context.fill();
+                    }
+                    else if (lastPacDirection === 2) {
+                        context.beginPath();
+                        context.arc(center.x, center.y, 30, 0.65 * Math.PI, 0.35 * Math.PI); // half circle
+                        context.lineTo(center.x, center.y);
+                        context.fillStyle = pac_color; //color
+                        context.fill();
+                        context.beginPath();
+                        context.arc(center.x + 15, center.y + 9, 5, 0, 2 * Math.PI); // circle
+                        context.fillStyle = "black"; //color
+                        context.fill();
+                    }
+                    else if (lastPacDirection === 3) {
+                        context.beginPath();
+                        context.arc(center.x, center.y, 30, 1.15 * Math.PI, 0.85 * Math.PI); // half circle
+                        context.lineTo(center.x, center.y);
+                        context.fillStyle = pac_color; //color
+                        context.fill();
+                        context.beginPath();
+                        context.arc(center.x - 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+                        context.fillStyle = "black"; //color
+                        context.fill();
+                    }
+                    else if (lastPacDirection === 4) {
+                        context.beginPath();
+                        context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
+                        context.lineTo(center.x, center.y);
+                        context.fillStyle = pac_color; //color
+                        context.fill();
+                        context.beginPath();
+                        context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+                        context.fillStyle = "black"; //color
+                        context.fill();
+                    }
+                    else {
+                        context.beginPath();
+                        context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
+                        context.lineTo(center.x, center.y);
+                        context.fillStyle = pac_color; //color
+                        context.fill();
+                        context.beginPath();
+                        context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+                        context.fillStyle = "black"; //color
+                        context.fill();
+                    }
+                } else if (secondaryBoard[i][j] === 30) {
+                    context.beginPath();
+                    context.arc(center.x, center.y, 25, Math.PI, 0); // half circle
+                    context.lineTo(center.x, center.y);
+                    context.fillStyle = "#00FFFF";                    
+                    context.fill();
+                    context.fillRect(center.x - 25, center.y, 50, 25);
+                    context.beginPath();                   
+                    context.arc(center.x - 10, center.y - 10, 8, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 10, center.y - 10, 8, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();
+                    context.arc(center.x - 8, center.y - 10, 4, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 12, center.y - 10, 4, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "black"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x, center.y + 6, 9, 0, Math.PI); // circle                    
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x - 20, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x - 10, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x + 10, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x + 20, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                } else if (secondaryBoard[i][j] === 31) {
+                    context.beginPath();
+                    context.arc(center.x, center.y, 25, Math.PI, 0); // half circle
+                    context.lineTo(center.x, center.y);
+                    context.fillStyle = "pink";                    
+                    context.fill();
+                    context.fillRect(center.x - 25, center.y, 50, 25);
+                    context.beginPath();                   
+                    context.arc(center.x - 10, center.y - 10, 8, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 10, center.y - 10, 8, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();
+                    context.arc(center.x - 8, center.y - 10, 4, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 12, center.y - 10, 4, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "black"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x, center.y + 6, 9, 0, Math.PI); // circle                    
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x - 20, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x - 10, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x + 10, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x + 20, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                } else if (secondaryBoard[i][j] === 32) {
+                    context.beginPath();
+                    context.arc(center.x, center.y, 25, Math.PI, 0); // half circle
+                    context.lineTo(center.x, center.y);
+                    context.fillStyle = "red";                    
+                    context.fill();
+                    context.fillRect(center.x - 25, center.y, 50, 25);
+                    context.beginPath();                   
+                    context.arc(center.x - 10, center.y - 10, 8, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 10, center.y - 10, 8, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();
+                    context.arc(center.x - 8, center.y - 10, 4, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 12, center.y - 10, 4, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "black"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x, center.y + 6, 9, 0, Math.PI); // circle                    
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x - 20, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x - 10, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x + 10, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x + 20, center.y + 25, 5, Math.PI, 0); // circle 
+                    context.fillStyle = "rgb(241, 175, 76)"; //color
+                    context.fill();
+                } else if (secondaryBoard[i][j] === 50) {
+                    context.beginPath();
+                    context.arc(center.x, center.y, 20, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "yellow"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x - 10, center.y - 3, 6, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 10, center.y - 3, 6, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();
+                    context.arc(center.x - 7, center.y - 2, 3, 0, 2 * Math.PI); // circle                    
+                    context.arc(center.x + 13, center.y - 2, 3, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "black"; //color
+                    context.fill();
+                    context.beginPath();                   
+                    context.arc(center.x, center.y + 6, 7, 0, Math.PI); // circle                    
+                    context.fillStyle = "white"; //color
+                    context.fill();
+                    context.beginPath();
+                    context.arc(center.x - 10, center.y - 16, 5, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "green"; //color
+                    context.fill();
+                    context.beginPath();
+                    context.arc(center.x, center.y - 16, 5, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "red"; //color
+                    context.fill();
+                    context.beginPath();
+                    context.arc(center.x + 10, center.y - 16, 5, 0, 2 * Math.PI); // circle
+                    context.fillStyle = "blue"; //color
+                    context.fill();
+                } else if (board[i][j] === 1) {
+                    context.beginPath();
+                    context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                    context.fillStyle = gameSettings["firstColor"]; //color
+                    context.fill();
+                } else if (board[i][j] === 4) {
+                    context.beginPath();
+                    context.rect(center.x - 30, center.y - 30, 60, 60);
+                    context.fillStyle = "grey"; //color
+                    context.fill();
+                } else if (board[i][j] === 5) {
+                    context.beginPath();
+                    context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                    context.fillStyle = gameSettings["secondColor"]; //color
+                    context.fill();
+                } else if (board[i][j] === 6) {
+                    context.beginPath();
+                    context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                    context.fillStyle = gameSettings["thirdColor"]; //color
+                    context.fill();
+                } 
+            }
+        }
+    }
+
+    function updateMonstersPosition() {
+        for (var i = 0; i < gameSettings["monstersNumber"]; i++) {
+            secondaryBoard[monstersShape[i].i][monstersShape[i].j] = 0;
+            var iDist = Math.abs(monstersShape[i].i - shape.i);
+            var jDist = Math.abs(monstersShape[i].j - shape.j);
+            if (iDist > jDist) {
+                if (monstersShape[i].i > shape.i) {
+                    if (monstersShape[i].i > 0 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 4 
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i--;
+                    } else if (monstersShape[i].j > shape.j && monstersShape[i].j > 0 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 4
+                        && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1]  !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1]  !== 31
+                        && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1]  !== 32) {
+                            monstersShape[i].j--;
+                    } else if (monstersShape[i].j < 9 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 4
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 31
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 32) {
+                        monstersShape[i].j++;                   
+                    }
+                     else if (monstersShape[i].i < 9 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 4
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i++;
+                    }
+                } else {
+                    if (monstersShape[i].i < 9 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 4
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i++;
+                    } else if (monstersShape[i].j < shape.j && monstersShape[i].j < 9 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 4
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 31
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 32) {
+                        monstersShape[i].j++;
+                    }  else if (monstersShape[i].j > 0 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 4
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 31
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 32) {
+                        monstersShape[i].j--;
+                    } else if (monstersShape[i].i > 0 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 4
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i--;
+                    }                   
+                }
+            } else {
+                if (monstersShape[i].j > shape.j) {
+                    if (monstersShape[i].j > 0 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 4
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 31
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 32) {
+                        monstersShape[i].j--;
+                    }  else if (monstersShape[i].i < shape.i && monstersShape[i].i < 9 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 4
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i++;
+                    }  else if (monstersShape[i].i > 0 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 4
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i--;
+                    } else if (monstersShape[i].j < 9 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 4
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 31
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 32) {
+                        monstersShape[i].j++;
+                    }                    
+                } else {
+                    if (monstersShape[i].j < 9 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 4
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 31
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j + 1] !== 32) {
+                        monstersShape[i].j++;
+                    } else if (monstersShape[i].i < shape.i && monstersShape[i].i < 9 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 4
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i + 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i++;
+                    }  else if (monstersShape[i].i > 0 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 4
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 30 && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 31
+                    && secondaryBoard[monstersShape[i].i - 1][monstersShape[i].j] !== 32) {
+                        monstersShape[i].i--;
+                    } else if (monstersShape[i].j > 0 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 4
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 30 && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 31
+                    && secondaryBoard[monstersShape[i].i][monstersShape[i].j - 1] !== 32) {
+                        monstersShape[i].j--;
+                    } 
+                }
+            }
+            var str = "3";
+            str = str.concat(i);
+            secondaryBoard[monstersShape[i].i][monstersShape[i].j] = parseInt(str);
+        }
+    }
+
+    function UpdatePosition() {
+        updateMonstersPosition();
+        if (stillExist === 1) {
+            secondaryBoard[pointsShape.i][pointsShape.j] = 0;
+            var rand = Math.floor((Math.random() * 3) + 1);
+            if (rand === 1) {
+                if (pointsShape.j > 0 && secondaryBoard[pointsShape.i][pointsShape.j - 1] !== 4 && secondaryBoard[pointsShape.i][pointsShape.j - 1] !== 30
+                && secondaryBoard[pointsShape.i][pointsShape.j - 1] !== 31 && secondaryBoard[pointsShape.i][pointsShape.j - 1] !== 32) {
+                    pointsShape.j--;
+                }
+            }
+            if (rand === 2) {
+                if (pointsShape.j < 9 && secondaryBoard[pointsShape.i][pointsShape.j + 1] !== 4 && secondaryBoard[pointsShape.i][pointsShape.j + 1] !== 30
+                && secondaryBoard[pointsShape.i][pointsShape.j + 1] !== 31 && secondaryBoard[pointsShape.i][pointsShape.j + 1] !== 32) {
+                    pointsShape.j++;
+                }
+            }
+            if (rand === 3) {
+                if (pointsShape.i > 0 && secondaryBoard[pointsShape.i - 1][pointsShape.j] !== 4 && secondaryBoard[pointsShape.i - 1][pointsShape.j] !== 30
+                && secondaryBoard[pointsShape.i - 1][pointsShape.j] !== 31 && secondaryBoard[pointsShape.i - 1][pointsShape.j] !== 32) {
+                    pointsShape.i--;
+                }
+            }
+            if (rand === 4) {
+                if (pointsShape.i < 9 && secondaryBoard[pointsShape.i + 1][pointsShape.j] !== 4 && secondaryBoard[pointsShape.i + 1][pointsShape.j] !== 30
+                && secondaryBoard[pointsShape.i + 1][pointsShape.j] !== 31 && secondaryBoard[pointsShape.i + 1][pointsShape.j] !== 32) {
+                    pointsShape.i++;
+                }
+            }
+            secondaryBoard[pointsShape.i][pointsShape.j] = 50;
+        }
+        board[shape.i][shape.j] = 0;     
+        var x = GetKeyPressed();
+        if (x === 1) {
+            if (shape.j > 0 && board[shape.i][shape.j - 1] !== 4) {
+                shape.j--;
+                lastPacDirection = 1;
+            }
+        }
+        if (x === 2) {
+            if (shape.j < 9 && board[shape.i][shape.j + 1] !== 4) {
+                shape.j++;
+                lastPacDirection = 2;
+            }
+        }
+        if (x === 3) {
+            if (shape.i > 0 && board[shape.i - 1][shape.j] !== 4) {
+                shape.i--;
+                lastPacDirection = 3;
+            }
+        }
+        if (x === 4) {
+            if (shape.i < 9 && board[shape.i + 1][shape.j] !== 4) {
+                shape.i++;
+                lastPacDirection = 4;
+            }
+        }
+        if (board[shape.i][shape.j] === 1) {
+            score += 5;
+        }else if (board[shape.i][shape.j] === 5) {
+            score += 15;
+        } else if (board[shape.i][shape.j] === 6) {
+            score += 25;
+        }
+        if (secondaryBoard[shape.i][shape.j] === 50) {
+            secondaryBoard[shape.i][shape.j] = 0;
+            stillExist = 0;
+            score += 50;
+            animMovingPoints.restart();
+        }
+        if (secondaryBoard[shape.i][shape.j] === 30 || secondaryBoard[shape.i][shape.j] === 31 || secondaryBoard[shape.i][shape.j] === 32) {
+            board[shape.i][shape.j] = 0;
+            Draw();
+            var lLife = document.getElementById("lblLife");
+            lifeLeft--;
+            score -= 10;
+            lLife.value = lifeLeft;
+            animLostLife.restart();            
+            if (lifeLeft <= 0) {
+                stop();               
+                animLost.restart();
+            } else {
+                startMonstersPosition(secondaryBoard);
+                var emptyCell = findRandomEmptyCell(board);
+                shape.i = emptyCell[0];
+                shape.j = emptyCell[1]; 
+                while (secondaryBoard[shape.i][shape.j] === 30 || secondaryBoard[shape.i][shape.j] === 31 || secondaryBoard[shape.i][shape.j] === 32
+                || shape.i > 0 && secondaryBoard[shape.i - 1][shape.j] === 30 || shape.i > 0 && secondaryBoard[shape.i - 1][shape.j] === 31 || shape.i > 0 && secondaryBoard[shape.i - 1][shape.j] === 32
+                || shape.i < 9 && secondaryBoard[shape.i + 1][shape.j] === 30 || shape.i < 9 && secondaryBoard[shape.i + 1][shape.j] === 31 || shape.i < 9 && secondaryBoard[shape.i + 1][shape.j] === 32
+                || shape.j > 0 && secondaryBoard[shape.i][shape.j - 1] === 30 || shape.j > 0 && secondaryBoard[shape.i][shape.j - 1] === 31 || shape.j > 0 && secondaryBoard[shape.i][shape.j - 1] === 32 
+                || shape.j < 9 && secondaryBoard[shape.i][shape.j + 1] === 30 || shape.j < 9 && secondaryBoard[shape.i][shape.j + 1] === 31 || shape.j < 9 && secondaryBoard[shape.i][shape.j + 1] === 32
+                || shape.i < 9 && shape.j < 9 && secondaryBoard[shape.i + 1][shape.j + 1] === 30 || shape.i < 9 && shape.j < 9 && secondaryBoard[shape.i + 1][shape.j + 1] === 31 || shape.i < 9 && shape.j < 9 && secondaryBoard[shape.i + 1][shape.j + 1] === 32
+                || shape.i < 9 && shape.j > 0 && secondaryBoard[shape.i + 1][shape.j - 1] === 30 || shape.i < 9 && shape.j > 0 && secondaryBoard[shape.i + 1][shape.j - 1] === 31 || shape.i < 9 && shape.j > 0 && secondaryBoard[shape.i + 1][shape.j - 1] === 32
+                || shape.i > 0 && shape.j > 0 && secondaryBoard[shape.i - 1][shape.j - 1] === 30 || shape.i > 0 && shape.j > 0 && secondaryBoard[shape.i - 1][shape.j - 1] === 31 || shape.i > 0 && shape.j > 0 && secondaryBoard[shape.i - 1][shape.j - 1] === 32
+                || shape.i > 0 && shape.j < 9 && secondaryBoard[shape.i - 1][shape.j + 1] === 30 || shape.i > 0 && shape.j < 9 && secondaryBoard[shape.i - 1][shape.j + 1] === 31 || shape.i > 0 && shape.j < 9 && secondaryBoard[shape.i - 1][shape.j + 1] === 32) {
+                    emptyCell = findRandomEmptyCell(board);
+                    shape.i = emptyCell[0];
+                    shape.j = emptyCell[1];                
+                }
+                board[shape.i][shape.j] = 2;                
+                Draw();
+            }                                            
+        } else {
+            board[shape.i][shape.j] = 2;
+            var currentTime = new Date();
+            time_elapsed = (currentTime - start_time) / 1000;
+            var str = "Score: ";
+            str = str.concat(score);
+            str = str.concat(", Life: ");
+            str = str.concat(lifeLeft);
+            if (time_elapsed >= gameSettings["gameTime"]) {                               
+                if (score >= 150) {
+                    animWin.restart();                    
+                    str = str.concat(", We have a Winner!!!");
+                } else {
+                    animDoBetter.restart();                    
+                    str = str.concat(", You can do better...");                    
+                }
+                stop();
+                setTimeout(function(){ alert(str); }, 3000);                
+            } else {
+                Draw();
+            }
+        }       
+    }
+
+    function welcomeFunction() {
+        stop();
+        var wel = document.getElementById("welcome");
+        var reg = document.getElementById("registration");
+        var log = document.getElementById("login");
+        var game = document.getElementById("game");
+        var set = document.getElementById("settings");        
+        wel.style.display = "block";
+        reg.style.display = "none";
+        log.style.display = "none";
+        game.style.display = "none";
+        set.style.display = "none";
+    }
+
+    function loginFunction() {
+        stop();
+        var wel = document.getElementById("welcome");
+        var reg = document.getElementById("registration");
+        var log = document.getElementById("login");
+        var game = document.getElementById("game");
+        var set = document.getElementById("settings");        
+        log.style.display = "block";
+        wel.style.display = "none";
+        reg.style.display = "none";
+        game.style.display = "none";
+        set.style.display = "none";
+    }
+
+    function validateLoginUserFunction() {
+        var userName = document.getElementById("userNameLogin");
+        var pass = document.getElementById("passwordLogin");
+        fLen = users.length;
+        for (i = 0; i < fLen; i++) {
+            if (userName.value != "" && pass.value != "" && users[i]["userName"] == userName.value && users[i]["password"] == pass.value) {
+                currentUser = users[i];
+                userName.value = "";
+                pass.value = "";
+                settingsFunction();
+                return;
+            }          
+        }
+        alert("User Not Exist! Try again.");
+    }
+
+    function stop() {
+        pauseAudio();
+        window.clearInterval(interval);
+    }
+
+    function settingsFunction() {
+        stop();
+        var set = document.getElementById("settings");
+        var wel = document.getElementById("welcome");
+        var reg = document.getElementById("registration");
+        var log = document.getElementById("login");
+        var game = document.getElementById("game");
+        set.style.display = "block";
+        wel.style.display = "none";
+        reg.style.display = "none";
+        log.style.display = "none";
+        game.style.display = "none";
+    }
+
+    function updateGameSettingsFunction() {
+        var rightK = document.getElementById("rightKey");
+        var leftK = document.getElementById("leftKey");
+        var upK = document.getElementById("upKey");
+        var downK = document.getElementById("downKey");
+        var ballsN = document.getElementById("ballsNum");
+        var firstT = document.getElementById("firstTypeBalls");
+        var firstC = document.getElementById("firstColorBalls");
+        var secondT = document.getElementById("secondTypeBalls");
+        var secondC = document.getElementById("secondColorBalls");
+        var thirdT = document.getElementById("thirdTypeBalls");
+        var thirdC = document.getElementById("thirdColorBalls");
+        var gameT = document.getElementById("timeOfGame");
+        var monstersN = document.getElementById("monstersNum");
+
+
+        gameSettings = {right: rightK.value, left: leftK.value, up: upK.value, down: downK.value, ballsNum: ballsN.value, firstType: 5, firstColor: "",
+        secondType: 15, secondColor: "", thirdType: 25, thirdColor: "", gameTime: gameT.value, monstersNumber: monstersN.value};
+        if (gameSettings["up"] === "") {
+            gameSettings["up"] = '38';
+        } else {
+            gameSettings["up"] = upK.value.toUpperCase().charCodeAt(0);
+        }
+        if (gameSettings["down"] === "") {
+            gameSettings["down"] = '40';
+        } else {
+            gameSettings["down"] = downK.value.toUpperCase().charCodeAt(0);
+        }
+        if (gameSettings["right"] === "") {
+            gameSettings["right"] = '39';
+        } else {
+            gameSettings["right"] = rightK.value.toUpperCase().charCodeAt(0);
+        }
+        if (gameSettings["left"] === "") {
+            gameSettings["left"] = '37';
+        } else {
+            gameSettings["left"] = leftK.value.toUpperCase().charCodeAt(0);
+        }
+        if (firstT.options[firstT.selectedIndex].value == 5 && secondT.options[secondT.selectedIndex].value == 15 && thirdT.options[thirdT.selectedIndex].value == 25) {
+            gameSettings["firstColor"] = firstC.options[firstC.selectedIndex].value;
+            gameSettings["secondColor"] = secondC.options[secondC.selectedIndex].value;
+            gameSettings["thirdColor"] = thirdC.options[thirdC.selectedIndex].value;
+        }
+        else if (firstT.options[firstT.selectedIndex].value == 5 && secondT.options[secondT.selectedIndex].value == 25 && thirdT.options[thirdT.selectedIndex].value == 15) {
+            gameSettings["firstColor"] = firstC.options[firstC.selectedIndex].value;
+            gameSettings["secondColor"] = thirdC.options[thirdC.selectedIndex].value;
+            gameSettings["thirdColor"] = secondC.options[secondC.selectedIndex].value;
+        }
+        else if (firstT.options[firstT.selectedIndex].value == 15 && secondT.options[secondT.selectedIndex].value == 5 && thirdT.options[thirdT.selectedIndex].value == 25) {
+            gameSettings["firstColor"] = secondC.options[secondC.selectedIndex].value;
+            gameSettings["secondColor"] = firstC.options[firstC.selectedIndex].value;
+            gameSettings["thirdColor"] = thirdC.options[thirdC.selectedIndex].value;
+        }
+        else if (firstT.options[firstT.selectedIndex].value == 15 && secondT.options[secondT.selectedIndex].value == 25 && thirdT.options[thirdT.selectedIndex].value == 5) {
+            gameSettings["firstColor"] = thirdC.options[thirdC.selectedIndex].value;
+            gameSettings["secondColor"] = firstC.options[firstC.selectedIndex].value;
+            gameSettings["thirdColor"] = secondC.options[secondC.selectedIndex].value;
+        }
+        else if (firstT.options[firstT.selectedIndex].value == 25 && secondT.options[secondT.selectedIndex].value == 5 && thirdT.options[thirdT.selectedIndex].value == 15) {
+            gameSettings["firstColor"] = secondC.options[secondC.selectedIndex].value;
+            gameSettings["secondColor"] = thirdC.options[thirdC.selectedIndex].value;
+            gameSettings["thirdColor"] = firstC.options[firstC.selectedIndex].value;
+        }
+        else {
+            gameSettings["firstColor"] = thirdC.options[thirdC.selectedIndex].value;
+            gameSettings["secondColor"] = secondC.options[secondC.selectedIndex].value;
+            gameSettings["thirdColor"] = firstC.options[firstC.selectedIndex].value;
+        }
+        rightK.value = "";
+        leftK.value = "";
+        upK.value = "";
+        downK.value = "";
+        ballsN.value = "";
+        firstT.value = "5";
+        firstC.value = "#F3E5AB";
+        secondT.value = "5";
+        secondC.value = "#F3E5AB";
+        thirdT.value = "5";
+        thirdC.value = "#F3E5AB";
+        gameT.value = "";
+        monstersN.value = "";
+
+        gameFunction();
+    }
+
+    function randomGameSettingsFunction() {     
+        var colors = {1: "#C68E17", 2: "#966F33", 3: "#C36241", 4: "#6F4E37", 5: "#C85A17", 6: "white", 7: "black"};
+        gameSettings = {right: "", left: "", up: "", down: "", ballsNum: "", firstType: 5, firstColor: "", secondType: 15, secondColor: "", thirdType: 25, thirdColor: "", gameTime: "", monstersNumber: ""};
+        gameSettings["up"] = '38';
+        gameSettings["down"] = '40';
+        gameSettings["right"] = '39';
+        gameSettings["left"] = '37';
+        var balls = Math.floor(Math.random() * (90 - 50 + 1)) + 50;
+        gameSettings["ballsNum"] = balls;
+        var fColor = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+        var sColor = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+        var tColor = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+        while (sColor == fColor) {
+            sColor = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+        }
+        while (tColor == fColor || tColor == sColor) {
+            tColor = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+        }
+        gameSettings["firstColor"] = colors[fColor];
+        gameSettings["secondColor"] = colors[sColor];
+        gameSettings["thirdColor"] = colors[tColor];
+        var time = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
+        gameSettings["gameTime"] = time;
+        var monsters = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+        gameSettings["monstersNumber"] = monsters;
+        console.log(gameSettings);
+        gameFunction();
+    }
+
+    function gameFunction() {
+        var user = document.getElementById("lblCurrUserName");
+        var life = document.getElementById("lblLife");
+        var wel = document.getElementById("welcome");
+        var set = document.getElementById("settings");
+        var reg = document.getElementById("registration");
+        var log = document.getElementById("login");
+        var game = document.getElementById("game");
+        Start();      
+        game.style.display = "block";
+        wel.style.display = "none";
+        log.style.display = "none";
+        reg.style.display = "none";
+        set.style.display = "none";
+        var str1 = currentUser["firstName"];
+        var str2 = " ";
+        var str3 = currentUser["lastName"];        
+        var res = str1.concat(str2);
+        res = res.concat(str3);
+        user.value = res;
+        lifeLeft = 3;
+        life.value = lifeLeft;     
+    }
+
+    function aboutFunction() {
+        document.getElementById("about").showModal();
+        var modal = document.getElementById("about");
+        window.onclick = function(event) {
+            if (event.target == modal) {                
+                closeModalFunction();
+            }
+        }
+    }
+
+    function closeModalFunction() {        
+        document.getElementById("about").close();
+    }
+
+    function registrationFunction() {
+        stop();
+        var wel = document.getElementById("welcome");
+        var reg = document.getElementById("registration");
+        var log = document.getElementById("login");
+        var game = document.getElementById("game");
+        var set = document.getElementById("settings");        
+        reg.style.display = "block";
+        wel.style.display = "none";
+        log.style.display = "none";
+        game.style.display = "none";
+        set.style.display = "none";
+    }
+
+    function RegisterUserFunction() {
+        var uName = document.getElementById("regUserName");
+        var uPass = document.getElementById("regPassword");
+        var ufName = document.getElementById("regFirstName");
+        var ulName = document.getElementById("regLastName");
+        var uEmail = document.getElementById("regEmail");
+        var uDay = document.getElementById("day");
+        var uMonth = document.getElementById("month");
+        var uYear = document.getElementById("year");
+
+        var user = {userName: uName.value, password: uPass.value, firstName: ufName.value, lastName: ulName.value, Email: uEmail.value, day: uDay.value, month: uMonth.value, year: uYear.value};
+        users.push(user);
+        alert("You registered successfuly!");
+        uName.value = "";
+        uPass.value = "";
+        ufName.value = "";
+        ulName.value = "";
+        uEmail.value = "";
+        uDay.value = "1";
+        uMonth.value = "1";
+        uYear.value = "2019";
+    }
+
+    function addDateOptions() {
+        var day = document.getElementById('day');
+        for(var i = 0; i < 31; i++){
+            var option = document.createElement('option')
+            option.value = i + 1;
+            option.innerHTML= i + 1;
+            day.appendChild(option);
+        }
+        var month = document.getElementById('month');
+        for(var i = 0; i < 12; i++){
+            var option = document.createElement('option')
+            option.value =  i + 1;
+            option.innerHTML= i + 1;
+            month.appendChild(option);
+        }
+        var year = document.getElementById('year');
+        for(var i = 2019; i > 1940; i--){
+            var option = document.createElement('option')
+            option.value = i;
+            option.innerHTML = i;
+            year.appendChild(option);
+        }        
+    }
+</script>
+</body>
+
+</html>
